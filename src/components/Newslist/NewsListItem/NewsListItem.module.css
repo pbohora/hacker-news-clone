@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.newsItem__title {
+  display: flex;
+  flex-direction: row;
+  line-height: 0;
+}
+.newsItem__Subsection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+}

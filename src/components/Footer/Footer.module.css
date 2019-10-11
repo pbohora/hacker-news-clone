@@ -1,0 +1,15 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  border-top: 2px solid #ff6600;
+}
+
+.footer__form {
+  padding-bottom: 10px;
+}
+
+.footer__input {
+  height: 24px;
+}
