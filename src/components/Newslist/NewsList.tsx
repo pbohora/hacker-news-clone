@@ -1,15 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import NewsListItem from './NewsListItem/NewsListItem';
 import styles from './NewsList.module.css';
+import { News, newsState } from '../../reducers/types';
 
-const NewsList: React.FC = ({}) => {
+export interface NewsProps {
+  news: newsState;
+}
+
+const NewsList: React.FC<NewsProps> = ({ news }) => {
   return (
     <div className={styles.container}>
-      <Button icon={true} clickHandle={alert('jello')} />
-      <NewsListItem title='Hacker news is here' points={1} hide={false} comments={4} link='wwdd' />
+      <Button clickHandle={console.log('hello')} icon={true} />
+      {news.map(singleNews => (
+        <NewsListItem
+          key={singleNews.id}
+          title={singleNews.title}
+          points={singleNews.points}
+          hide={false}
+          comments={singleNews.comments}
+          link={singleNews.link}
+        />
+      ))}
     </div>
   );
 };
 
-export default NewsList;
+const mapStateToProps = (state: { news: any }) => {
+  console.log(state);
+  return {
+    news: state.news,
+  };
+};
+
+export default connect(mapStateToProps)(NewsList);
