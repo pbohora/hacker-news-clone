@@ -6,7 +6,7 @@ import styles from './NewsList.module.css';
 import { News, newsState } from '../../reducers/types';
 
 export interface NewsProps {
-  news: newsState;
+  news: News[];
 }
 
 const NewsList: React.FC<NewsProps> = ({ news }) => {
@@ -19,7 +19,7 @@ const NewsList: React.FC<NewsProps> = ({ news }) => {
           title={singleNews.title}
           points={singleNews.points}
           hide={false}
-          comments={singleNews.comments}
+          comments={singleNews.num_comments}
           link={singleNews.link}
         />
       ))}
@@ -27,8 +27,8 @@ const NewsList: React.FC<NewsProps> = ({ news }) => {
   );
 };
 
-const mapStateToProps = (state: { news: any }) => {
-  console.log(state);
+const mapStateToProps = (state: newsState) => {
+  console.log(state.news);
   return {
     news: state.news,
   };

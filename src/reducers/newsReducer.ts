@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import newsService from '../services/news';
 import { newsActionTypes, INIT_NEWS } from './types';
 
@@ -12,12 +13,12 @@ const newsReducer = (state = [], action: newsActionTypes) => {
 };
 
 export const initialNews = () => {
-  return async (dispatch: (arg0: { type: string; data: any }) => void) => {
+  return async (dispatch: Dispatch) => {
     const news = await newsService.getFrontNews();
-    console.log(news);
+    console.log(news.hits);
     dispatch({
       type: INIT_NEWS,
-      data: news,
+      data: news.hits,
     });
   };
 };

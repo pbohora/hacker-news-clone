@@ -4,6 +4,8 @@ export interface News {
   author: string;
   points: number;
   num_comments: number;
+  link: string;
+  id: string;
 }
 
 export interface newsState {
